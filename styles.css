@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    display: none;
+}
+
+video.active {
+    display: block;
+}
+
+.countdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.countdown h1 {
+    font-size: 3rem;
+    margin-bottom: 1px;
+}
+
+.countdown h6 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFD700;
+}
+
+.countdown h6 img {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.countdown .timer {
+    font-size: 12vw;
+    font-weight: bold;
+    letter-spacing: 2px;
+    line-height: 1;
+    color: #9F7361;
+    -webkit-text-stroke: 2px #fff;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Heartbeat Animation */
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.timer.heartbeat {
+    animation: heartbeat 0.8s infinite;
+}
+
+/* Media Queries for Small Devices */
+@media (max-width: 768px) {
+    .countdown h1 {
+        font-size: 2.5rem;
+        margin-bottom: 5px;
+    }
+
+    .countdown h6 {
+        font-size: 1.5rem;
+    }
+
+    .countdown .timer {
+        font-size: 8vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .countdown h1 {
+        font-size: 2rem;
+        line-height: 1.5;
+    }
+
+    .countdown h6 {
+        font-size: 1.5rem;
+        color: #FFD700;
+    }
+
+    .countdown .timer {
+        font-size: 30vw;
+        font-weight: bold;
+        letter-spacing: 2px;
+        line-height: 1;
+        color: #9F7361;
+        -webkit-text-stroke: 2px #fff;
+    }
+}
